@@ -119,6 +119,7 @@
     <ClCompile Include="binary_operations.cpp" />
     <ClCompile Include="continuous.cpp" />
     <ClCompile Include="means.cpp" />
+    <ClCompile Include="misc_operations.cpp" />
     <ClCompile Include="OOP.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,7 @@
     <ClInclude Include="CalculatorModule.h" />
     <ClInclude Include="continuous.h" />
     <ClInclude Include="means.h" />
+    <ClInclude Include="misc_operations.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
