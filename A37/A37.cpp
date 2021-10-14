@@ -5,6 +5,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <float.h>
+#include <string.h>
 
 struct cylinder_dimensions {
     double radius;
@@ -49,6 +50,16 @@ void continuous_multiplication() {
         scanf("%d", &choice);
     }
     printf("%d\n", product);
+}
+
+void continuous_addition() {
+    int sum;
+    char choice[] = "0";
+    for (sum = 0; strcmp(choice, "x"); sum += (strcmp(choice, "x") ? atoi(choice) : 0)) {
+        printf("Continous input: ");
+        scanf("%s", choice);
+    }
+    printf("%d\n", sum);
 }
 
 double get_max(double x, double y) {
@@ -163,6 +174,7 @@ int main(int argc, char **argv) {
     printf("4 sin\n");
     printf("5 add given num of numbers\n");
     printf("6 *4 w/o +-*/\n");
+    printf("7 cont. addition\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
@@ -170,6 +182,7 @@ int main(int argc, char **argv) {
     else if (choice == 4) give_sinus();
     else if (choice == 5) add_num_of_numbers();
     else if (choice == 6) multiply_by_bitshift();
+    else if (choice == 7) continuous_addition();
     system("pause");
     return 0;
 }
