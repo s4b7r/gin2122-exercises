@@ -60,7 +60,7 @@ void mean() {
     printf("min %f\n", min);
     printf("max %f\n", max);
 }
-void mean_a36() {
+void mean_restrictedcount() {
     int num;
     int numbers[100];
     int sum = 0;
@@ -81,6 +81,26 @@ void mean_a36() {
         max = get_max(max, numbers[i]);
     }
     
+    printf("mean: int %d, float %f\n", sum / num, (double)sum / num);
+    printf("min %f\n", min);
+    printf("max %f\n", max);
+}
+void mean_unrestricted() {
+    int num;
+    int sum = 0;
+    double input;
+    double min = DBL_MAX, max = DBL_MIN;
+    printf("how many numbers: ");
+    scanf("%d", &num);
+
+    for (int i = 0; i < num; i++) {
+        printf("num %d: ", i);
+        scanf("%lf", &input);
+        sum += input;
+        min = get_min(min, input);
+        max = get_max(max, input);
+    }
+
     printf("mean: int %d, float %f\n", sum / num, (double)sum / num);
     printf("min %f\n", min);
     printf("max %f\n", max);
@@ -106,10 +126,13 @@ void add_num_of_numbers() {
 }
 void means() {
     int choice;
-    printf("1 mean, 2 a36\n");
+    printf("1 mean\n");
+    printf("2 restricted num of numbers\n");
+    printf("3 unrestircted num of numbers\n");
     scanf("%d", &choice);
     if (choice == 1) mean();
-    else if (choice == 2) mean_a36();
+    else if (choice == 2) mean_restrictedcount();
+    else if (choice == 3) mean_unrestricted();
 }
 int main(int argc, char **argv) {
     int choice;
