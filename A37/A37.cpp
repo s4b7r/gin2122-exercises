@@ -68,14 +68,19 @@ void mean_a36() {
     double min = DBL_MAX, max = DBL_MIN;
     printf("how many numbers: ");
     scanf("%d", &num);
+    
     for (int i = 0; i < num; i++) {
         printf("num %d: ", i);
         scanf("%lf", &input);
         numbers[i] = input;
-        sum += numbers[i];
-        min = get_min(min, input);
-        max = get_max(max, input);
     }
+
+    for (int i = 0; i < num; i++) {
+        sum += numbers[i];
+        min = get_min(min, numbers[i]);
+        max = get_max(max, numbers[i]);
+    }
+    
     printf("mean: int %d, float %f\n", sum / num, (double)sum / num);
     printf("min %f\n", min);
     printf("max %f\n", max);
