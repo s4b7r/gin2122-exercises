@@ -115,13 +115,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Adder.cpp" />
     <ClCompile Include="binary_operations.cpp" />
     <ClCompile Include="continuous.cpp" />
     <ClCompile Include="means.cpp" />
     <ClCompile Include="OOP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Adder.h" />
     <ClInclude Include="binary_operations.h" />
+    <ClInclude Include="CalculatorModule.h" />
     <ClInclude Include="continuous.h" />
     <ClInclude Include="means.h" />
   </ItemGroup>

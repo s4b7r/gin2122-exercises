@@ -8,6 +8,8 @@
 #include "binary_operations.h"
 #include "continuous.h"
 #include "means.h"
+#include "CalculatorModule.h"
+#include "Adder.h"
 
 void give_sinus() {
     double param;
@@ -34,32 +36,6 @@ void multiply_by_bitshift() {
     printf("number: ");
     scanf("%d", &input);
     printf("%d * 4 = %d\n", input, input << 2);
-}
-
-class CalculatorModule {
-public:
-    virtual const std::string get_description() = 0;
-    virtual void work() = 0;
-};
-
-class Adder : public CalculatorModule {
-public:
-    virtual const std::string get_description();
-    virtual void work();
-
-};
-
-const std::string Adder::get_description() {
-    return "Add";
-}
-
-void Adder::work() {
-    int x, y;
-    printf("x: ");
-    scanf("%d", &x);
-    printf("y: ");
-    scanf("%d", &y);
-    printf("%d + %d = %d\n", x, y, x + y);
 }
 
 int main(int argc, char **argv) {
