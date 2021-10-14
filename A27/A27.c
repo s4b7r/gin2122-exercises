@@ -32,12 +32,25 @@ void continuous_multiplication() {
     }
     printf("%d\n", product);
 }
+void mean() {
+    int numbers[5];
+    int sum=0;
+    for (int i = 0; i < 5; i++) {
+        printf("num %d: ", i);
+        scanf("%d", numbers + i);
+        sum += numbers[i];
+    }
+    printf("mean: int %d, float %f\n", sum / 5, (double)sum/5);
+}
 int main(int argc, char **argv) {
     int choice;
-    printf("1*/, 2 cont. multiplication\n");
+    printf("1*/\n");
+    printf("2 cont.multiplication\n");
+    printf("3 mean\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
+    else if (choice == 3) mean();
     system("pause");
     return 0;
 }
