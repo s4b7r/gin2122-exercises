@@ -49,17 +49,30 @@ void give_sinus() {
     scanf("%lf", &param);
     printf("%f\n", sin(param));
 }
+void add_num_of_numbers() {
+    int num;
+    double input, sum=0;
+    printf("how many numbers: ");
+    scanf("%d", &num);
+    for (int i = 0; i < num; i++) {
+        scanf("%lf", &input);
+        sum += input;
+    }
+    printf("%f\n", sum);
+}
 int main(int argc, char **argv) {
     int choice;
     printf("1*/\n");
     printf("2 cont.multiplication\n");
     printf("3 mean\n");
     printf("4 sin\n");
+    printf("5 add given num of numbers\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
     else if (choice == 3) mean();
     else if (choice == 4) give_sinus();
+    else if (choice == 5) add_num_of_numbers();
     system("pause");
     return 0;
 }
