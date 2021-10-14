@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
+#include <float.h>
 
 int divide(int x, int y) {
     return x / y;
@@ -33,15 +34,30 @@ void continuous_multiplication() {
     }
     printf("%d\n", product);
 }
+
+double get_max(double x, double y) {
+    return x > y ? x : y;
+}
+double get_min(double x, double y) {
+    return x < y ? x : y;
+}
+
 void mean() {
     int numbers[5];
-    int sum=0;
+    int sum = 0;
+    double input;
+    double min = DBL_MAX, max = DBL_MIN;
     for (int i = 0; i < 5; i++) {
         printf("num %d: ", i);
-        scanf("%d", numbers + i);
+        scanf("%lf", &input);
+        numbers[i] = input;
         sum += numbers[i];
+        min = get_min(min, input);
+        max = get_max(max, input);
     }
-    printf("mean: int %d, float %f\n", sum / 5, (double)sum/5);
+    printf("mean: int %d, float %f\n", sum / 5, (double)sum / 5);
+    printf("min %f\n", min);
+    printf("max %f\n", max);
 }
 void give_sinus() {
     double param;
@@ -49,6 +65,7 @@ void give_sinus() {
     scanf("%lf", &param);
     printf("%f\n", sin(param));
 }
+
 void add_num_of_numbers() {
     int num;
     double input, sum=0;
@@ -57,8 +74,9 @@ void add_num_of_numbers() {
     for (int i = 0; i < num; i++) {
         scanf("%lf", &input);
         sum += input;
+        
     }
-    printf("%f\n", sum);
+    printf("sum %f\n", sum);
 }
 int main(int argc, char **argv) {
     int choice;
