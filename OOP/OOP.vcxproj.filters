@@ -30,6 +30,9 @@
     <ClCompile Include="Adder.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="misc_operations.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binary_operations.h">
@@ -45,6 +48,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="CalculatorModule.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="misc_operations.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
