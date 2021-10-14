@@ -134,6 +134,12 @@ void means() {
     else if (choice == 2) mean_restrictedcount();
     else if (choice == 3) mean_unrestricted();
 }
+void multiply_by_bitshift() {
+    int input;
+    printf("number: ");
+    scanf("%d", &input);
+    printf("%d * 4 = %d", input, input << 2);
+}
 int main(int argc, char **argv) {
     int choice;
     printf("1*/\n");
@@ -141,12 +147,14 @@ int main(int argc, char **argv) {
     printf("3 mean\n");
     printf("4 sin\n");
     printf("5 add given num of numbers\n");
+    printf("6 *4 w/o +-*/\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
     else if (choice == 3) means();
     else if (choice == 4) give_sinus();
     else if (choice == 5) add_num_of_numbers();
+    else if (choice == 6) multiply_by_bitshift();
     system("pause");
     return 0;
 }
