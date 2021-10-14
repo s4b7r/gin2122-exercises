@@ -59,6 +59,26 @@ void mean() {
     printf("min %f\n", min);
     printf("max %f\n", max);
 }
+void mean_a36() {
+    int num;
+    int numbers[100];
+    int sum = 0;
+    //double input;
+    //double min = DBL_MAX, max = DBL_MIN;
+    printf("how many numbers: ");
+    scanf("%d", &num);
+    for (int i = 0; i < num; i++) {
+        printf("num %d: ", i);
+        scanf("%d", numbers + i);// &input);
+        //numbers[i] = input;
+        sum += numbers[i];
+        //min = get_min(min, input);
+        //max = get_max(max, input);
+    }
+    printf("mean: int %d, float %f\n", sum / num, (double)sum / num);
+    //printf("min %f\n", min);
+    //printf("max %f\n", max);
+}
 void give_sinus() {
     double param;
     printf("param of sin: ");
@@ -78,6 +98,13 @@ void add_num_of_numbers() {
     }
     printf("sum %f\n", sum);
 }
+void means() {
+    int choice;
+    printf("1 mean, 2 a36\n");
+    scanf("%d", &choice);
+    if (choice == 1) mean();
+    else if (choice == 2) mean_a36();
+}
 int main(int argc, char **argv) {
     int choice;
     printf("1*/\n");
@@ -88,7 +115,7 @@ int main(int argc, char **argv) {
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
-    else if (choice == 3) mean();
+    else if (choice == 3) means();
     else if (choice == 4) give_sinus();
     else if (choice == 5) add_num_of_numbers();
     system("pause");
