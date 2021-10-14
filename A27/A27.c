@@ -1,6 +1,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <math.h>
 
 int divide(int x, int y) {
     return x / y;
@@ -42,15 +43,23 @@ void mean() {
     }
     printf("mean: int %d, float %f\n", sum / 5, (double)sum/5);
 }
+void give_sinus() {
+    double param;
+    printf("param of sin: ");
+    scanf("%lf", &param);
+    printf("%f\n", sin(param));
+}
 int main(int argc, char **argv) {
     int choice;
     printf("1*/\n");
     printf("2 cont.multiplication\n");
     printf("3 mean\n");
+    printf("4 sin\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
     else if (choice == 3) mean();
+    else if (choice == 4) give_sinus();
     system("pause");
     return 0;
 }
