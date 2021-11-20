@@ -166,6 +166,189 @@ void multiply_by_bitshift() {
     scanf("%d", &input);
     printf("%d * 4 = %d\n", input, input << 2);
 }
+
+int qs_input(int inputs[]) {
+	// Eingabe ähnlich zu Aufgabe 5.8 übernommen
+
+	char choice[] = "0";
+	int anzahl = 0;
+	for (int i = 0; strcmp(choice, "x"); i++) {
+		printf("Continous input: ");
+		scanf("%s", choice);
+		if (strcmp(choice, "x")) {
+			inputs[i] = atoi(choice);
+			anzahl++;
+		}
+	}
+	return anzahl;
+}
+
+void qs_output(int outputs[], int len_outputs) {
+	for (int i = 0; i < len_outputs; i++) {
+		printf("%d\t", outputs[i]);
+	}
+	printf("\n");
+}
+
+
+void qs_sort(int liste[], int len_liste) {
+	/*
+	(1) Auswahl eines beliebigen Vergleichselements, z. B. des mittleren Elements
+des Arrays: Dabei stehen startLinks und startRechts für den äußerst linken bzw.
+äußerst rechten Index des Arrays, am Anfang also für 0 und n - 1.*/
+	int startLinks = 0;
+	int startRechts = len_liste - 1;
+	int vergleichselementIndex = (startLinks + startRechts) / 2;
+	int elementLinks = 0;
+	int elementRechts = len_liste - 1;
+
+	qs_output(liste, len_liste);
+	printf("vergleichselement index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex]);
+	system("pause");
+
+	/*
+(2) Linkes Teilarray mit kleineren (oder gleichen) und rechtes Teilarray mit
+größeren (oder gleichen) Elementen erzeugen.*/
+
+	while (elementRechts >= elementLinks) {
+
+		/*
+		(2.1) Absuchen des linken Arrays von links her, bis ein größeres Element als
+		das Vergleichselement an der Vergleichsposition vergleichselementIndex
+		gefunden wird. startLinks wird jeweils inkrementiert.*/
+
+		printf("Suche von links (ab Stelle %d Wert %d) ein Element größer dem Vergleichselement\n", elementLinks, liste[elementLinks]);
+
+		while (liste[elementLinks] <= liste[vergleichselementIndex]) {
+			elementLinks++;
+			startLinks++;
+			printf("nächster Kandidat: vergleichselement index %d wert %d liste[elementLinks] index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex], elementLinks, liste[elementLinks]);
+			system("pause");
+			if (elementRechts < elementLinks) {
+				break;
+			}
+		}
+		if (elementRechts < elementLinks) {
+			printf("Suchelemente kreuzen\n");
+			break;
+		}
+
+		printf("gefunden: vergleichselement index %d wert %d liste[elementLinks] index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex], elementLinks, liste[elementLinks]);
+		system("pause");
+
+		/*
+	(2.2) Absuchen des Arrays von rechts her, bis ein kleineres Element als das
+	Vergleichselement gefunden wird. startRechts wird jeweils dekrementiert.*/
+
+		printf("Suche von rechts (ab Stelle %d Wert %d) ein Element kleiner dem Vergleichselement\n", elementRechts, liste[elementRechts]);
+
+		while (liste[elementRechts] >= liste[vergleichselementIndex]) {
+			elementRechts--;
+			startRechts--;
+			printf("nächster Kandidat: vergleichselement index %d wert %d liste[elementRechts] index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex], elementRechts, liste[elementRechts]);
+			system("pause");
+			if (elementRechts < elementLinks) {
+				break;
+			}
+		}
+		if (elementRechts < elementLinks) {
+			printf("Suchelemente kreuzen\n");
+			break;
+		}
+
+		printf("gefunden: vergleichselement index %d wert %d liste[elementRechts] index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex], elementRechts, liste[elementRechts]);
+		system("pause");
+
+		/*
+		(2.3) Vertauschen des gefundenen größeren Elements (aktuelle Position
+		startLinks) mit dem gefundenen kleineren Element (aktuelle Position
+		startRechts).*/
+
+		int tmp;
+		tmp = liste[elementLinks];
+		liste[elementLinks] = liste[elementRechts];
+		liste[elementRechts] = tmp;
+
+		printf("Elemente getauscht:\n");
+		qs_output(liste, len_liste);
+
+
+	}
+
+	/*
+	(2.4) Inkrementieren von startLinks und dekrementieren von start-
+	Rechts um jeweils 1.*/
+
+	startLinks++;
+	startRechts--;
+
+	/*
+	!!!??? (2.5) Schritte 2.1 bis 2.3 wiederholen, bis sich die beiden Suchindizes überkreuzen.
+	Die Kreuzung definiert die Stelle, an der das Array in Schritt
+	(3) in Teilarrays zerteilt wird.*/
+
+
+
+	/*         element links
+				|
+ links|        ||           |rechts
+			   |
+			element rechts
+			*/
+			/*
+			(2.6) Wenn sich das Vergleichselement nun im linken Teilarray befindet, wird
+			es mit dem letzten Element des linken Teilarrays ausgetauscht, da definitionsgemäß
+			alle Teilelemente im linken Teilarray kleiner oder gleich
+			dem Vergleichselement sind. */
+
+	printf("Nach der Überschneidung\n");
+	qs_output(liste, len_liste);
+
+	if (vergleichselementIndex <= elementRechts) {
+		int tmp;
+		tmp = liste[vergleichselementIndex];
+		liste[vergleichselementIndex] = liste[elementRechts];
+		liste[elementRechts] = tmp;
+	}
+
+	printf("Falls Vergleichselement in linkem Teil, ist dieses getauscht worden\n");
+	qs_output(liste, len_liste);
+
+	/*Dasselbe gilt umgekehrt für das rechte
+	Teilarray, in dem definitionsgemäß alle Elemente größer oder gleich
+	dem Vergleichselement sind. D. h. das Vergleichselement muss dann
+	mit dem ersten Element des rechten Teilarrays vertauscht werden, falls
+	sich das Vergleichselement in diesem Teilarray befindet. */
+
+	if (vergleichselementIndex >= elementLinks) {
+		int tmp;
+		tmp = liste[vergleichselementIndex];
+		liste[vergleichselementIndex] = liste[elementLinks];
+		liste[elementLinks] = tmp;
+	}
+
+	printf("Falls Vergleichselement in rechtem Teil, ist dieses getauscht worden\n");
+	qs_output(liste, len_liste);
+
+	/*Das Teilarray,
+	in welchem das Vergleichselement verschoben wurde, wird nun um einen
+	Index verkleinert, da das Vergleichselement sich durch diesen
+	Schritt bereits an seiner endgültigen Position befindet.
+	(3) Rekursive Zerlegung des linken und rechten Teilarrays gemäß (1) und (2) solange,
+	bis die Teilarrays weniger als 2 Elemente haben.
+		*/
+}
+
+
+void quicksort() {
+	int zahlen[100];
+	int anzahl_zahlen;
+
+	anzahl_zahlen = qs_input(zahlen);
+	qs_sort(zahlen, anzahl_zahlen);
+	qs_output(zahlen, anzahl_zahlen);
+}
+
 int main(int argc, char **argv) {
     int choice;
     printf("1 binary operations\n");
@@ -175,6 +358,7 @@ int main(int argc, char **argv) {
     printf("5 add given num of numbers\n");
     printf("6 *4 w/o +-*/\n");
     printf("7 cont. addition\n");
+	printf("8 quicksort\n");
     scanf("%d", &choice);
     if (choice == 1) binary_operators();
     else if (choice == 2) continuous_multiplication();
@@ -183,6 +367,7 @@ int main(int argc, char **argv) {
     else if (choice == 5) add_num_of_numbers();
     else if (choice == 6) multiply_by_bitshift();
     else if (choice == 7) continuous_addition();
+	else if (choice == 8) quicksort();
     system("pause");
     return 0;
 }
