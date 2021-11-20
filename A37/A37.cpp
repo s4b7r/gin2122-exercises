@@ -202,6 +202,7 @@ des Arrays: Dabei stehen startLinks und startRechts für den äußerst linken bzw.
 	int elementLinks = 0;
 	int elementRechts = len_liste - 1;
 
+	printf("qs_sort:\n");
 	qs_output(liste, len_liste);
 	printf("vergleichselement index %d wert %d\n", vergleichselementIndex, liste[vergleichselementIndex]);
 	system("pause");
@@ -309,6 +310,7 @@ größeren (oder gleichen) Elementen erzeugen.*/
 		tmp = liste[vergleichselementIndex];
 		liste[vergleichselementIndex] = liste[elementRechts];
 		liste[elementRechts] = tmp;
+		elementRechts--;
 	}
 
 	printf("Falls Vergleichselement in linkem Teil, ist dieses getauscht worden\n");
@@ -325,6 +327,7 @@ größeren (oder gleichen) Elementen erzeugen.*/
 		tmp = liste[vergleichselementIndex];
 		liste[vergleichselementIndex] = liste[elementLinks];
 		liste[elementLinks] = tmp;
+		elementLinks++;
 	}
 
 	printf("Falls Vergleichselement in rechtem Teil, ist dieses getauscht worden\n");
@@ -334,9 +337,16 @@ größeren (oder gleichen) Elementen erzeugen.*/
 	in welchem das Vergleichselement verschoben wurde, wird nun um einen
 	Index verkleinert, da das Vergleichselement sich durch diesen
 	Schritt bereits an seiner endgültigen Position befindet.
+	*//*
 	(3) Rekursive Zerlegung des linken und rechten Teilarrays gemäß (1) und (2) solange,
 	bis die Teilarrays weniger als 2 Elemente haben.
 		*/
+
+	if(elementRechts + 1 >= 2) qs_sort(liste, elementRechts + 1);
+	if(len_liste - elementLinks >= 2) qs_sort(&(liste[elementLinks]), len_liste - elementLinks);
+	
+	printf("Nach Rekursion:\n");
+	qs_output(liste, len_liste);
 }
 
 
