@@ -193,6 +193,10 @@ void qs_output(int outputs[], int len_outputs) {
 
 void qs_sort(int liste[], int len_liste) {
 	/*
+	Beschreibung von QuickSort aus
+	J. Goll und M. Dausmann, C als erste Programmiersprache: mit den Konzepten von C11,
+	8., Überarbeitete und Erweiterte Auflage. Wiesbaden: Springer Vieweg, 2014.
+	*//*
 	(1) Auswahl eines beliebigen Vergleichselements, z. B. des mittleren Elements
 des Arrays: Dabei stehen startLinks und startRechts für den äußerst linken bzw.
 äußerst rechten Index des Arrays, am Anfang also für 0 und n - 1.*/
